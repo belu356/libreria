@@ -11,7 +11,7 @@ export class BooksService {
   constructor(private http: Http ) { }
 
   getBooks():Observable<books[]> {
-    return this.http.get('')
+    return this.http.get('http://localhost:8888/api/books')
     .map(function (data){
       return data.json();
     })
