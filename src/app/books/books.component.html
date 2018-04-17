@@ -1,7 +1,33 @@
 <div *ngFor= 'let book of books'>
   <div>
-    {{book.title}}
+    {{book.title}}   {{book.author}}
   </div>
 
 
+<div>
+   {{ book.genre}}
 </div>
+
+</div>
+<div> ---------------------------------------  </div> <br>
+<form>
+  <div>
+      <label>Libro</label>
+      <input>
+  </div>
+  
+  <div>
+      <label>Genero</label>
+      <input>
+  </div>
+
+  <div>
+      <label>Autor</label>
+      <input>
+  </div>
+
+  <button type="submit">Enviar</button>
+
+</form>
+
+
