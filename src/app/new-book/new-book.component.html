@@ -1,0 +1,25 @@
+<form [formGroup]="form" (ngSubmit)="saveBook">
+  <div class="form-group">
+  <div>
+      <label>Libro</label>
+      <input type="text" formControlName="titulo" [(ngModel)]="titulo">
+  </div>
+  
+  <div>
+      <label>Genero</label>
+      <input type="text" formControlName="genero" [(ngModel)]="genero"> 
+  </div>
+
+  <div>
+      <label>Autor</label>
+      <input type="text" formControlName="autor" [(ngModel)]="autor">
+  </div>
+
+</div>
+  <button type="submit" (click)="saveBook()">Enviar</button>
+
+</form>
+
+
+<p> {{form.value | json }}</p>
+
