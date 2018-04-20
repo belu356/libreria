@@ -2,21 +2,21 @@
   <div class="form-group">
   <div>
       <label>Libro</label>
-      <input type="text" formControlName="titulo" [(ngModel)]="titulo">
+      <input type="text" formControlName="title" [(ngModel)]="title">
   </div>
   
   <div>
       <label>Genero</label>
-      <input type="text" formControlName="genero" [(ngModel)]="genero"> 
+      <input type="text" formControlName="genre" [(ngModel)]="genre"> 
   </div>
 
   <div>
       <label>Autor</label>
-      <input type="text" formControlName="autor" [(ngModel)]="autor">
+      <input type="text" formControlName="author" [(ngModel)]="author">
   </div>
 
 </div>
-  <button type="submit" (click)="saveBook()">Enviar</button>
+  <button type="submit" (click)="saveBook(form)">Enviar</button>
 
 </form>
 

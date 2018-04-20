@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { BooksService } from './../books.service';
+import { books } from '../books'; 
 
 @Component({
   selector: 'app-new-book',
@@ -8,10 +9,9 @@ import { BooksService } from './../books.service';
   styleUrls: ['./new-book.component.scss']
 })
 export class NewBookComponent implements OnInit {
-
-
+  @Output() sendBook = new EventEmitter();
   form: FormGroup;
-  book = {}
+  book = [];
   constructor(private formB: FormBuilder,
     private booksService: BooksService) {
 
@@ -20,26 +20,27 @@ export class NewBookComponent implements OnInit {
 
   private createForm() {
     this.form = this.formB.group({
-      titulo: [null, [Validators.required]],
-      genero: [null, [Validators.required]],
-      autor: [null, [Validators.required]]
-
+      title: [null, [Validators.required]],
+      genre: [null, [Validators.required]],
+      author: [null, [Validators.required]]
     })
   }
 
-  saveBook() {
-    return this.booksService.saveBook(this.book).toPromise()
-      .then(function () {
-        this.BooksService.getAll().subscribe(book => {
-          this.book = book
-          console.log('agregado')
-        })
-      })
-
-  }
-
-
   ngOnInit() {
+    
   }
 
+  saveBook(form) {
+    this.book = form.value;
+    this.booksService.saveBook(this.book)
+    .toPromise()
+       .then(res => {
+         console.log(res);
+         this.booksService.getBooks().subscribe(book => {
+           this.book = book;
+           this.sendBook.emit(this.book);
+           console.log('agregado')
+         })
+       })
+   }
 }

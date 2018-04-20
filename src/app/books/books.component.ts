@@ -20,5 +20,7 @@ export class BooksComponent implements OnInit {
 
   }
   
-
+  receiveBook($event) {
+    this.books = $event;
+  }
 }
